@@ -6,7 +6,7 @@ let background = "";
 
 const getCities = async (searchText) => {
     const response = await fetch(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${searchText}&limit=5&appid=${API_Key}`
+        `https://api.openweathermap.org/geo/1.0/direct?q=${searchText}&limit=5&appid=${API_Key}`
     );
     return response.json();
 };
@@ -38,7 +38,7 @@ const gethourlyforecast = async ({ name: city }) => {
 
 const formateTemperature = (temp) => `${temp?.toFixed(1)}°C`;
 const createIconUrl = (icon) =>
-    `http://openweathermap.org/img/wn/${icon}@2x.png`;
+    `https://openweathermap.org/img/wn/${icon}@2x.png`;
 const calculateDayWiseForecast = (hourlyforecast) => {
     let dayWiseForecast = new Map();
     for (let forecast of hourlyforecast) {
