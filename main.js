@@ -82,7 +82,6 @@ const loadCurrentForecast = ({
     currentForecastElement.querySelector(".description").textContent =
         description;
     backgroundchange.style.backgroundImage =`url('images/${background}.jpg')`;
-    console.log(background)
     currentForecastElement.querySelector(
         ".min-max-temp"
     ).textContent = `H: ${formatTemperature(temp_max)} L: ${formatTemperature(temp_min)}`;
@@ -166,7 +165,6 @@ const loadData = async (selectedCity) => {
     loadhourlyforecast(currentWeather, hourlyforecast);
     loadFeelsLike(currentWeather);
     loadHumidity(currentWeather);
-    console.log(background);
 }
 
 
