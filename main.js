@@ -36,7 +36,7 @@ const gethourlyforecast = async ({ name: city }) => {
     });
 };
 
-const formateTemperature = (temp) => `${temp?.toFixed(1)}°C`;
+const formatTemperature = (temp) => `${temp?.toFixed(1)}°C`;
 const createIconUrl = (icon) =>
     `https://openweathermap.org/img/wn/${icon}@2x.png`;
 const calculateDayWiseForecast = (hourlyforecast) => {
@@ -78,14 +78,14 @@ const loadCurrentForecast = ({
     backgroundchange.style.backgroundImage =`url('images/${background}.jpg')`;
     currentForecastElement.querySelector(".city").textContent = name;
     currentForecastElement.querySelector(".temp").textContent =
-        formateTemperature(temp);
+        formatTemperature(temp);
     currentForecastElement.querySelector(".description").textContent =
         description;
     backgroundchange.style.backgroundImage =`url('images/${background}.jpg')`;
     console.log(background)
     currentForecastElement.querySelector(
         ".min-max-temp"
-    ).textContent = `H: ${temp_max} L: ${temp_min}`;
+    ).textContent = `H: ${formatTemperature(temp_max)} L: ${formatTemperature(temp_min)}`;
 };
 
 const loadhourlyforecast = (
@@ -107,13 +107,13 @@ const loadhourlyforecast = (
     let innerHTMLstring = `<article>
     <h3 class="time">NOW</h3>
     <img class="icon" src="${createIconUrl(iconNow)}"/>
-    <p class="hourly-temp">${formateTemperature(tempNow)}</p>
+    <p class="hourly-temp">${formatTemperature(tempNow)}</p>
   </article>`;
     for (let { temp, icon, dt_txt } of dataFor12Hours) {
         innerHTMLstring += `<article>
         <h3 class="time">${timeFormatter.format(new Date(dt_txt))}</h3>
         <img class="icon" src="${createIconUrl(icon)}"/>
-        <p class="hourly-temp">${formateTemperature(temp)}</p>
+        <p class="hourly-temp">${formatTemperature(temp)}</p>
       </article>`;
     }
     hourlyContainer.innerHTML = innerHTMLstring;
@@ -132,8 +132,8 @@ const loadFiveDayForecast = (hourlyforecast) => {
             <img class="icon" src="${createIconUrl(
                     icon
                 )}" alt="icon for the forecast"/>
-            <p class="min-temp">${formateTemperature(temp_min)}</p>
-            <p class="max-temp">${formateTemperature(temp_max)}</p>
+            <p class="min-temp">${formatTemperature(temp_min)}</p>
+            <p class="max-temp">${formatTemperature(temp_max)}</p>
           </article>`;
             }
         }
@@ -143,7 +143,7 @@ const loadFiveDayForecast = (hourlyforecast) => {
 
 const loadFeelsLike = ({ main: { feels_like } }) => {
     document.querySelector(".feels-like-temp").textContent =
-        formateTemperature(feels_like);
+        formatTemperature(feels_like);
 };
 const loadHumidity = ({ main: { humidity } }) => {
     document.querySelector(".humidity-text").textContent = `${humidity} %`;
