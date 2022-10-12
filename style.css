@@ -1,12 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 *,*::after,::after{
     box-sizing: border-box;
 }
 
 :root{
-
     --font-small:.5rem;
     --font-regular:1rem;
-    --font-large:2rem;
+    --font-large:1.5rem;
     --font-xl:4rem;
     --spacing-medium:8px;
     --spacing-regular: 16px;
@@ -15,9 +15,12 @@
 
 h1,h2{
     margin: 0;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
 }
 p{
     margin: var(--spacing-regular);
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -28,7 +31,7 @@ body {
 }
 
 .container {
-    margin-top: 5rem;
+    margin: 2rem 1rem 2rem 1rem;
     display: grid;
     grid-template-columns: repeat(2,1fr);
     grid-template-areas: 
@@ -47,28 +50,26 @@ body {
 .container,.container>article {
     padding: var(--spacing-regular);
     border-radius: var(--spacing-medium);
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 5px );
+    background: rgba( 255, 255, 255, 0.5 );
 }
 
 #search{
     grid-area: search;;
     text-align: center;
     font-size: var(--font-large);
-    border-radius: var(--font-regular);
+    border-radius: var(--font-small);
     padding: var(--spacing-medium);
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    background: rgba( 255, 255, 255, 0.5 );
+    backdrop-filter: blur( 5px );
+    border: none;
 }
-
+#search datalist > option{
+    width: 100%;
+}
 
 #current-forecast{
     grid-area: current;
     text-align: center;
-    /* background: url(images/Mist.jpg); */
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-
 }
 #current-forecast .temp{
     font-size: var(--font-xl);
@@ -88,6 +89,8 @@ body {
 #hourly-forecast{
     grid-area: hourly;
     text-align: center;
+    justify-content: center;
+    display: grid;
 }
 #hourly-forecast .hourly-container{
     display: grid;
@@ -96,6 +99,7 @@ body {
     grid-auto-columns: minmax(100,1fr);
     overflow-x: auto;
     gap: var(--spacing-regular);
+    justify-items: center;
 }
 
 #hourly-forecast .hourly-container::-webkit-scrollbar {
@@ -110,6 +114,12 @@ body {
     font-size: var(--font-regular);
     font-weight: var(--font-semibold);
 }
+
+#hourly-forecast .hourly-container h3,#hourly-forecast .hourly-container p{
+    margin: 0;
+    margin: auto;
+}
+
 
 #five-day-forecast{
     grid-area: fiveday;
@@ -129,6 +139,7 @@ body {
 .five-day-forecast-container .day-wise-forecast .max-temp{
     font-size: var(--font-regular);
     font-weight: var(--font-semibold);
+    margin: 0;
 }
 .five-day-forecast-container .day-wise-forecast .min-temp{
     opacity: 50%;
@@ -143,13 +154,34 @@ body {
     font-weight: var(--font-semibold);
 }
 
+/* Feel likes and Humidity */
 #feels-like{
     grid-area: feellike;
+    display: grid;
     text-align: center;
+    font-size: var(--font-regular);
+    justify-items: center;
+
 }
 #humidity{
     grid-area: humidity;
     text-align: center;
+    font-size: var(--font-regular);
+    justify-items: center;
+    display: grid;
+
+}
+#humidity p, #feels-like p{
+    margin: 0;
+    margin: auto;
+    font-size: var(--font-regular);
+    font-weight: var(--font-semibold);
+}
+#humidity h3, #feels-like h3{
+    margin: 0;
+    margin: auto;
+    font-size: var(--font-large);
+    font-weight: var(--font-semibold);
 }
 
 @media (width > 650px) {

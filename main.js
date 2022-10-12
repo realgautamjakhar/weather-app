@@ -105,7 +105,7 @@ const loadhourlyforecast = (
     let dataFor12Hours = hourlyforecast.slice(2, 14);
     const hourlyContainer = document.querySelector(".hourly-container");
     let innerHTMLstring = `<article>
-    <h3 class="time">Now</h3>
+    <h3 class="time">NOW</h3>
     <img class="icon" src="${createIconUrl(iconNow)}"/>
     <p class="hourly-temp">${formateTemperature(tempNow)}</p>
   </article>`;
